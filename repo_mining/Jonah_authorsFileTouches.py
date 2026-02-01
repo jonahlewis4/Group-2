@@ -19,7 +19,9 @@ def github_auth(url, lsttoken, ct):
 
 def is_source_file(filename):
     #return true if file is in app/src directory
-    return filename.startswith('app/src')
+    #and ends with .java, .kt, .cpp, or .c
+    ext = filename.split('.')[-1]
+    return ext in ['java', 'kt', 'cpp', 'c', 'h', 'hpp', 'cmake']
 def get_commits(filename, lsttokens, repo, ct):
     try:
 
