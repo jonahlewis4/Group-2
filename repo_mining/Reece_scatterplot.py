@@ -11,7 +11,7 @@ def convertWeeksLifetime(date_column):
     return weeks_since
 
 # To create a scatter plot, it must take in the CSV file created by "Reece_authorsFileTouches.py"
-df = pd.read_csv("data/authorFileTouches.csv")
+df = pd.read_csv("data/Reece_authorFileTouches.csv")
 
 # Reverse the dataframe.
 df = df.iloc[::-1]

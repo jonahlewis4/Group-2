@@ -125,7 +125,7 @@ for commit in allCommits:
     for srcfile in commit.touched_files:
         touch_history.append([srcfile, commit.date, commit.name, commit.login])
 
-with open('data/authorFileTouches.csv', 'w', newline = '') as csvfile:
+with open('data/Reece_authorFileTouches.csv', 'w', newline = '') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(["file", "date", "name", "login"])
     writer.writerows(touch_history)
