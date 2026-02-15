@@ -121,8 +121,17 @@ Each test should include:
 # Target Method: withdraw()
 
 # Student 7: Test withdrawal with insufficient funds
-# - Ensure withdrawal fails when balance is insufficient.
+# Test: Withdrawl with insufficient funds
+# Author: Jonah Lewis
+# Date: 2026-02-15
+# Description:  Ensure withdrawal fails when balance is insufficient.
 # Target Method: withdraw()
+def test_withdrawl_insufficient_funds():
+    """Test withdrawing from an a count with insufficient funds"""
+
+    account = Account(balance=0)
+    with pytest.raises(DataValidationError):
+        account.withdraw(1)
 
 # Student 8: Test password hashing
 # - Ensure passwords are properly hashed.
