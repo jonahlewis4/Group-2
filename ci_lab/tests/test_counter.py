@@ -210,7 +210,7 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.NOT_FOUND
 
-        #TODO Add an assertion to verify the error message contains the word 'not found'
+
         error_message = response.get_json()['error']
         assert 'not found' in error_message
     # ===========================
@@ -278,3 +278,13 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
+
+    # ===========================
+    # Test: Validate getting top n counters when there are none
+    # Author: Jonah Lewis
+    # ===========================
+    def test_validate_topn_no_counters(self, client):
+        """It should return not found when no counters exist"""
+        client.post('/counters/reset')
+        response = client.get('/counters/top/1')
+        assert response.status_code == HTTPStatus.NOT_FOUND
