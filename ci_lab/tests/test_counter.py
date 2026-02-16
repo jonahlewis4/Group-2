@@ -288,3 +288,10 @@ class TestCounterEndpoints:
         client.post('/counters/reset')
         response = client.get('/counters/top/1')
         assert response.status_code == HTTPStatus.NOT_FOUND
+
+    # ===========================
+    # Test: Always fails (for debugging demonstration)
+    # Author: Jonah Lewis
+    # ===========================
+    def test_fail(self, client):
+        assert True
