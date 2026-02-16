@@ -108,6 +108,44 @@ Each test should include:
 # TODO 4: Test Invalid Email Handling
 # - Check that invalid emails (e.g., "not-an-email") raise a validation error.
 # - Ensure accounts without an email cannot be created.
+# ===========================
+# Test: Invalid Email Handling
+# Author: Hristiyan Melios
+# Date: 2026-02-16
+# Description: - Ensure invalid emails raise a DataValidationError.
+# Ensure accounts without an email cannot be created.
+# ===========================
+def test_invalid_email_handling():
+
+    # Attempt to assign no email.
+    account = Account(role="user")
+    with pytest.raises(TypeError): # match() can't accept None type.
+        account.validate_email()
+
+    # Attempt invalid email: No '@' symbol.
+    account = Account(role="user", email="not-an-email")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: No '.' symbol after '@'.
+    account = Account(role="user", email="not-an-email@gmail")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: No text after '.'
+    account = Account(role="user", email="not-an-email@gmail.")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: No text before after '@'.
+    account = Account(role="user", email="@gmail.com")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: Special characters.
+    account = Account(role="user", email="gorilla-sushi@gmail.com!")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
 
 # TODO 5: Test Password Hashing
 # - Ensure that passwords are stored as **hashed values**.
