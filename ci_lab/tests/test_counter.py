@@ -290,7 +290,7 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.NOT_FOUND
 
     # ===========================
-    # Test: Always fails (for debugging demonstration)
+    # Test: Always Passes (for debugging demonstration)
     # Author: Jonah Lewis
     # ===========================
     def test_fail(self, client):
